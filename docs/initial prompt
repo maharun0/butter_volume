@@ -1,0 +1,528 @@
+# Project Planning Prompt
+
+## Overview
+
+I want to build a **premium Android Flutter application** that provides a floating on screen volume controller and an optional notification based volume slider. The goal is to create an application that feels polished, premium, lightweight, and modern rather than feature heavy.
+
+This project should be designed as a commercial product that can be published on the Google Play Store.
+
+The response should be extremely detailed and should make reasonable design and technical decisions wherever I have not specified one.
+
+If there are important product decisions that are unclear, ask me as many questions as necessary before generating the documentation.
+
+---
+
+# Deliverables
+
+Generate **two completely separate Markdown documents**.
+
+1. **Flutter Application Documentation**
+2. **FastAPI Backend Documentation**
+
+Each document should be very detailed, professionally structured, and suitable for handing directly to a development team.
+
+The documentation should include architecture diagrams (Markdown), folder structure, feature specifications, API contracts, UI flow, implementation strategy, state management, security, deployment strategy, and future roadmap.
+
+The documents should be as comprehensive as possible.
+
+---
+
+# Platform
+
+Current target platform:
+
+- Android only
+
+Future support:
+
+- iOS may be considered later, but should not influence current architecture unless it makes sense.
+
+---
+
+# Product Vision
+
+The application should feel like a native Android utility.
+
+It should be:
+
+- elegant
+- minimal
+- premium
+- clean
+- modern
+- responsive
+- smooth
+- highly customizable
+
+Avoid unnecessary visual clutter.
+
+Everything should have subtle animations.
+
+The app should support:
+
+- Material Design 3
+- Light Theme
+- Dark Theme
+- Dynamic colors where appropriate
+
+---
+
+# Main Feature
+
+The primary feature is a floating volume button.
+
+It should float above every application.
+
+The button should be movable by the user.
+
+The user can place it anywhere on the screen.
+
+Its position should persist across device restarts.
+
+---
+
+# Floating Button Customization
+
+The floating button should allow customization of:
+
+- Position
+- Size
+- Shape
+- Color
+- Opacity
+- Elevation
+- Border
+- Shadow
+- Icon
+- Icon size
+- Icon color
+
+The customization should update live.
+
+---
+
+# Themes
+
+The application should include multiple professionally designed presets.
+
+Examples:
+
+- Material Red
+- AMOLED Black
+- Ocean Blue
+- Forest Green
+- Purple Glass
+- Neon
+- Frosted Glass
+- Minimal White
+- Sunset Orange
+- Cyber
+
+Each theme should define:
+
+- Colors
+- Shadow
+- Border
+- Opacity
+- Animation style
+
+Users should also be able to create custom themes.
+
+---
+
+# Floating Button Behavior
+
+Normal state:
+
+The button appears as a circle.
+
+When pressed:
+
+- nothing special happens
+
+When long pressed:
+
+The circle should transform into a radial volume controller.
+
+The animation should feel smooth.
+
+The UI should expand naturally from the existing button.
+
+---
+
+# Volume Control Interaction
+
+While long pressing:
+
+A circular slider appears.
+
+The user should move vertically.
+
+Moving upward:
+
+- increases volume
+
+Moving downward:
+
+- decreases volume
+
+The UI should visualize the current volume using a circular progress indicator similar to:
+
+- pie chart
+- radial progress
+- circular arc
+
+The filled arc should animate in real time.
+
+When the finger is released:
+
+- the radial control smoothly collapses
+- the button returns to its original appearance
+
+The transition should feel premium.
+
+---
+
+# Optional Notification Volume Slider
+
+The application should also provide another method of controlling volume.
+
+A persistent notification should appear.
+
+Inside the notification:
+
+- horizontal volume slider
+- mute button
+- optional quick actions
+
+This feature can be enabled or disabled independently.
+
+---
+
+# Feature Activation
+
+There are two independent features.
+
+Feature 1
+
+Floating Button
+
+Feature 2
+
+Notification Volume Slider
+
+Each feature should have its own enable switch.
+
+Each feature should work independently.
+
+---
+
+# Free Version Restrictions
+
+Users who are not subscribed should have limited access.
+
+Each feature has its own timer.
+
+Example:
+
+Floating Button
+
+- Activate
+- Works for 12 hours
+- Automatically stops afterward
+- User must reopen the application to reactivate
+
+Notification Slider
+
+- Activate
+- Works for 12 hours
+- Automatically stops afterward
+- User must reopen the application to reactivate
+
+The timers should be completely independent.
+
+---
+
+# Subscription Model
+
+Pricing:
+
+Monthly Subscription
+
+- $0.67/month
+
+Lifetime Purchase
+
+- $7
+
+Take reasonable decisions about:
+
+- payment provider
+- purchase restoration
+- subscription validation
+- grace periods
+- offline behavior
+- trial handling
+
+---
+
+# Advertisement Strategy
+
+Non-paying users should only see advertisements when opening the application.
+
+Avoid interrupting usage.
+
+No ads while:
+
+- adjusting volume
+- using floating controls
+- using notification controls
+
+Suggest the best ad format.
+
+---
+
+# Backend
+
+Backend should be built using FastAPI.
+
+The backend should manage:
+
+- User accounts
+- Device registration
+- Subscription validation
+- Purchase verification
+- Theme synchronization
+- Analytics
+- Remote configuration
+- Feature flags
+- App version checking
+- Crash reporting integration
+- Premium entitlement
+- API authentication
+- Rate limiting
+
+Recommend additional backend features that would benefit the application.
+
+---
+
+# Flutter Architecture
+
+Recommend the complete Flutter architecture.
+
+Include recommendations for:
+
+- State management
+- Dependency injection
+- Navigation
+- Local storage
+- Secure storage
+- Background services
+- Overlay implementation
+- Notification implementation
+- Permissions
+- Package structure
+- Error handling
+- Logging
+- Testing
+- CI/CD
+- Build flavors
+
+Explain why each technology is selected.
+
+---
+
+# UI/UX
+
+Design the application to feel premium.
+
+Screens should include at minimum:
+
+- Splash
+- Onboarding
+- Permission Setup
+- Home
+- Floating Button Settings
+- Theme Gallery
+- Theme Editor
+- Notification Slider Settings
+- Subscription
+- Settings
+- About
+- Feedback
+
+Each screen should include:
+
+- Purpose
+- Components
+- User interactions
+- Navigation
+- Animations
+
+---
+
+# Animations
+
+Recommend animations throughout the application.
+
+Examples:
+
+- Floating button morphing
+- Circular expansion
+- Fade
+- Scale
+- Ripple
+- Hero transitions
+- Theme switching
+- Premium unlock animation
+
+---
+
+# Settings
+
+Include extensive settings.
+
+Examples:
+
+Appearance
+
+- Theme
+- Accent color
+- Dynamic colors
+
+Floating Button
+
+- Size
+- Shape
+- Position
+- Opacity
+- Animation speed
+- Vibration
+- Haptic feedback
+
+Notification Slider
+
+- Visibility
+- Compact mode
+- Expanded mode
+
+General
+
+- Auto start
+- Battery optimization
+- Accessibility shortcuts
+- Reset settings
+
+---
+
+# Permissions
+
+List every Android permission required.
+
+Explain:
+
+- Why it is needed
+- Whether it is optional
+- Runtime permission flow
+- Play Store implications
+
+---
+
+# Play Store Preparation
+
+Create a complete Play Store launch strategy.
+
+Include:
+
+- Target audience
+- Pricing justification
+- Keywords
+- ASO
+- App title ideas
+- Short description
+- Long description
+- Screenshots
+- Feature graphics
+- Promotional video ideas
+- Privacy policy
+- Support page
+- FAQ
+- Beta testing
+- Release strategy
+- Monetization strategy
+
+---
+
+# Branding
+
+Suggest:
+
+- App names
+- Logo ideas
+- Brand identity
+- Typography
+- Color palette
+- Marketing slogan
+
+---
+
+# Analytics
+
+Recommend analytics events.
+
+Track:
+
+- Feature activation
+- Subscription conversion
+- Theme usage
+- Button customization
+- Session duration
+- Timer expiration
+- Retention
+- Crash rate
+
+---
+
+# Technical Considerations
+
+Recommend solutions for:
+
+- Overlay performance
+- Battery usage
+- Memory optimization
+- Accessibility
+- Background execution
+- Android version compatibility
+- OEM restrictions
+- Foreground service requirements
+
+---
+
+# Future Roadmap
+
+Include future features such as:
+
+- Brightness control
+- Media controls
+- Custom gestures
+- AI automation
+- Widget support
+- Wear OS
+- Desktop support
+- iOS support
+- Backup & restore
+- Cloud sync
+- Automation rules
+
+---
+
+# General Expectations
+
+The generated documentation should:
+
+- Make intelligent product decisions wherever details are missing.
+- Explain the reasoning behind every major technical choice.
+- Maintain a consistent design philosophy throughout.
+- Read like professional software design documentation.
+- Be detailed enough to guide the entire development process from MVP to production.
+- Prioritize scalability, maintainability, and a premium user experience.
