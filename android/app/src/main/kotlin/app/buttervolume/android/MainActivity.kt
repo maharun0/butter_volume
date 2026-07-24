@@ -162,6 +162,20 @@ class MainActivity : FlutterActivity() {
                 else -> result.notImplemented()
             }
         }
+
+        // ---- System facts (replaces the dynamic_color plugin) ----
+        MethodChannel(messenger, AppChannels.SYSTEM).setMethodCallHandler { call, result ->
+            when (call.method) {
+                "accentColor" -> result.success(
+                    if (Build.VERSION.SDK_INT >= 31) {
+                        getColor(android.R.color.system_accent1_500)
+                    } else {
+                        null
+                    },
+                )
+                else -> result.notImplemented()
+            }
+        }
     }
 
     @Deprecated("Deprecated in Java")

@@ -21,4 +21,7 @@ abstract final class ChannelNames {
 
   /// Permission checks and special-access intents.
   static const String permissions = 'bv/permissions';
+
+  /// System UI facts (Material You accent color).
+  static const String system = 'bv/system';
 }

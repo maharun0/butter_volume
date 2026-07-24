@@ -27,13 +27,11 @@ const List<Color> kAccentSeeds = [
 ];
 
 abstract final class AppTheme {
-  static ThemeData light(ColorScheme? dynamicScheme, Color seed) =>
-      _base(dynamicScheme ??
-          ColorScheme.fromSeed(seedColor: seed));
+  static ThemeData light(Color seed) =>
+      _base(ColorScheme.fromSeed(seedColor: seed));
 
-  static ThemeData dark(ColorScheme? dynamicScheme, Color seed) =>
-      _base(dynamicScheme ??
-          ColorScheme.fromSeed(seedColor: seed, brightness: Brightness.dark));
+  static ThemeData dark(Color seed) => _base(
+      ColorScheme.fromSeed(seedColor: seed, brightness: Brightness.dark));
 
   static ThemeData _base(ColorScheme scheme) {
     final isDark = scheme.brightness == Brightness.dark;

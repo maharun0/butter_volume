@@ -21,7 +21,7 @@ class ThemeGalleryScreen extends ConsumerStatefulWidget {
 }
 
 class _ThemeGalleryScreenState extends ConsumerState<ThemeGalleryScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late final TabController tabs;
   late final AnimationController entrance;
 

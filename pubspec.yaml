@@ -23,8 +23,6 @@ dependencies:
   cryptography: ^2.9.0
   package_info_plus: ^10.2.1
   url_launcher: ^6.3.2
-  dynamic_color: ^1.8.1
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/analytics/analytics_service.dart';
 import 'core/config/remote_config_service.dart';
+import 'core/di/providers.dart';
 import 'core/network/api_client.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
@@ -78,28 +78,23 @@ class _ButterVolumeAppState extends ConsumerState<ButterVolumeApp>
     final appearance = ref.watch(appearanceProvider);
     final router = ref.watch(appRouterProvider);
 
-    return DynamicColorBuilder(
-      builder: (lightDynamic, darkDynamic) {
-        // Dynamic color applies to the app UI only — never the floating
-        // button, whose theme is user-authoritative (doc §2.5).
-        final useDynamic = appearance.dynamicColor;
-        return MaterialApp.router(
-          title: 'Butter Volume',
-          debugShowCheckedModeBanner: false,
-          themeMode: appearance.themeMode,
-          theme: AppTheme.light(
-            useDynamic ? lightDynamic : null,
-            appearance.accentSeed,
-          ),
-          darkTheme: AppTheme.dark(
-            useDynamic ? darkDynamic : null,
-            appearance.accentSeed,
-          ),
-          themeAnimationDuration: Motion.themeCrossFade,
-          themeAnimationCurve: Motion.settle,
-          routerConfig: router,
-        );
-      },
+    // Dynamic color applies to the app UI only — never the floating button,
+    // whose theme is user-authoritative (doc §2.5). The wallpaper accent is
+    // read natively over `bv/system` (no plugin) and seeds both schemes.
+    final systemAccent = ref.watch(systemAccentProvider).value;
+    final seed = appearance.dynamicColor && systemAccent != null
+        ? systemAccent
+        : appearance.accentSeed;
+
+    return MaterialApp.router(
+      title: 'Butter Volume',
+      debugShowCheckedModeBanner: false,
+      themeMode: appearance.themeMode,
+      theme: AppTheme.light(seed),
+      darkTheme: AppTheme.dark(seed),
+      themeAnimationDuration: Motion.themeCrossFade,
+      themeAnimationCurve: Motion.settle,
+      routerConfig: router,
     );
   }
 }

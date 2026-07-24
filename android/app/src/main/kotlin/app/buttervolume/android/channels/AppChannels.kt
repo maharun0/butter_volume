@@ -9,4 +9,5 @@ object AppChannels {
     const val VOLUME = "bv/volume"
     const val TIMERS = "bv/timers"
     const val PERMISSIONS = "bv/permissions"
+    const val SYSTEM = "bv/system"
 }
