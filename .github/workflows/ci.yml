@@ -1,0 +1,48 @@
+name: CI
+
+# PR stage of the pipeline (doc §15.2): analyze → test → build debug apk.
+# The main/tag stages (signed appbundle → Play tracks) activate once signing
+# keys and a Play Console app exist.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
+
+      - name: Overlay import budget (doc §13.1)
+        # The overlay entrypoint must not pull in dio/billing/ads/router.
+        run: |
+          deps=$(dart pub deps --style=compact 2>/dev/null || true)
+          for banned in dio in_app_purchase google_mobile_ads go_router; do
+            if grep -rE "import .*(${banned})" lib/overlay lib/overlay_main.dart; then
+              echo "::error::overlay code imports ${banned} — breaks the engine-B memory budget"
+              exit 1
+            fi
+          done
+
+      - name: Build debug APK (dev flavor)
+        run: flutter build apk --debug --flavor dev
