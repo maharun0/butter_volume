@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notif_mute">Mute</string>
+    <string name="notif_minus">−</string>
+    <string name="notif_plus">+</string>
+    <string name="notif_preset_0">0%</string>
+    <string name="notif_preset_25">25%</string>
+    <string name="notif_preset_50">50%</string>
+    <string name="notif_preset_75">75%</string>
+    <string name="notif_preset_100">100%</string>
+</resources>
